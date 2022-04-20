@@ -6,12 +6,11 @@ win_height = 500
 window = display.set_mode((win_width, win_height))
 window.fill(back)
 
-
-
 game = True
 finish = False
 clock = time.Clock()
 FPS = 60
+
 
 class GameSprite(sprite.Sprite):
    def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):
@@ -38,11 +37,15 @@ class Player(GameSprite):
        if keys[K_s] and self.rect.x < win_width - 80:
            self.rect.x += self.speed
 
-
+racket1 = Player('darth-vader-clip-art-4.png', 30, 200, 30, 300,150)
+racket2 = Player('darth-vader-clip-art-4.png', 30, 200, 30, 300,150)
 while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+    if finish != True:
+        racket1.reset()
+        racket2.reset()
 
     display.update()
     clock.tick(FPS)
